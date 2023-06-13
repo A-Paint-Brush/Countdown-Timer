@@ -1,0 +1,2 @@
+import Startpage
+Startpage.Startpage()
