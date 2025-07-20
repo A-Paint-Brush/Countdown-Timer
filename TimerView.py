@@ -1,3 +1,4 @@
+from Path import get_path
 import tkinter
 import Timer
 import pygame.mixer
@@ -87,7 +88,11 @@ class TimerView:
         self.btn.destroy()
         self.done = tkinter.Button(self.window, text="Exit", command=self.stop_ring_tone)
         self.done.pack()
-        self.toast.show_toast("Countdown Timer", "Time's up!", icon_path="Images\\python.ico", duration=10, threaded=True)
+        self.toast.show_toast(
+            "Countdown Timer", "Time's up!",
+            icon_path=get_path("Images/python.ico"),
+            duration=10, threaded=True
+        )
         self.sound = pygame.mixer.Sound(self.ring_tone_dir)
         self.sound.play(-1)
 
