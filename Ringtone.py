@@ -1,3 +1,4 @@
+from Path import get_path
 import tkinter
 import tkinter.messagebox
 import pygame.mixer
@@ -47,7 +48,7 @@ class Ringtone:
         if self.Ringtone_dir == "":
             tkinter.messagebox.showerror("Error", "You did not select a ringtone.")
         else:
-            with open("Data\\Ringtone Data.txt", "w", encoding="utf8") as file:
+            with open(get_path("Data/Ringtone Data.txt"), "w", encoding="utf8") as file:
                 file.write("Ringtone selected:\n" + self.Ringtone_dir)
             if pygame.mixer.get_busy():
                 self.window.after_cancel(self.id)
@@ -61,11 +62,11 @@ class Ringtone:
         if self.Ringtone_num is not None:
             self.set_buttons[self.Ringtone_num].config(text="Set As Ringtone", state="normal")
         self.Ringtone_num = number
-        self.Ringtone_dir = "Ringtones\\" + self.Ringtones[number] + ".wav"
+        self.Ringtone_dir = get_path("Ringtones/%s.wav" % (self.Ringtones[number],))
 
     def play_ringtone(self, number):
         self.play_buttons[number].config(text="Stop Ringtone", command=partial(self.stop_ringtone, number))
-        self.sound = pygame.mixer.Sound("Ringtones\\" + self.Ringtones[number] + ".wav")
+        self.sound = pygame.mixer.Sound(get_path("Ringtones/%s.wav" % (self.Ringtones[number],)))
         for i in range(0, len(self.Ringtones)):
             if i == number:
                 continue
