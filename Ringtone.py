@@ -11,18 +11,17 @@ class Ringtone:
         pygame.mixer.init()
         self.Ringtone_dir = ""
         self.Ringtone_num = None
-        self.Ringtones = ["Chill",
+        self.Ringtones = ["Alert",
                           "Bossa Nova",
                           "Buzz Whir",
-                          "Alert",
+                          "Chill",
                           "Classical Piano",
                           "Dance Around",
                           "Dance Celebrate",
                           "Dance Energetic",
                           "Dance Slow Mo",
                           "Movie 2",
-                          "Ring Tone",
-                          "Windows 10 Alarm"]
+                          "Ring Tone"]
         self.window = tkinter.Tk()
         self.window.title("Ringtone Settings")
         self.window.geometry("400x400")
